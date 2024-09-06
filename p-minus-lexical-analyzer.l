@@ -7,6 +7,9 @@
 inteiro[0-9]+
 real[0-9\.0-9]+
 ID[a-zA-Z][a-zA-Z0-9]*
+whitespace[ ]+
+tab[\t]+
+newline[\n]
 
 %%
 "se" {printf("PALAVRA-CHAVE: 'se' determina inicio da estrutura de decisao: %s\n", yytext);}
@@ -72,6 +75,12 @@ ID[a-zA-Z][a-zA-Z0-9]*
 {real} {printf("Numero de ponto flutuante: %s\n", yytext);}
 
 {ID} {printf("IDENTIFICADOR: %s\n", yytext);}
+
+{whitespace} {}
+
+{newline} {}
+
+{tab} {}
 
 . {printf("ERRO: Lexema nao reconhecido: %s\n", yytext);}
 
